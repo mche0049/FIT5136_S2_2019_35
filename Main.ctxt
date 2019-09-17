@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Main()
+comment1.params=
+comment1.target=void\ run()
+comment2.params=choice
+comment2.target=void\ login(int)
+comment3.params=choice
+comment3.target=void\ register(int)
+comment4.params=choice
+comment4.target=void\ chooseOption(int)
+comment5.params=choice
+comment5.target=void\ optionCustomer(int)
+comment6.params=choice
+comment6.target=void\ optionOwner(int)
+numComments=7
