@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.params=id\ hallName\ hallPrice\ hallLocation\ eventType\ capacity\ description
-comment0.target=Hall(long,\ java.lang.String,\ int,\ java.lang.String,\ java.lang.String,\ int,\ java.lang.String)
+comment0.target=Hall(java.lang.String,\ java.lang.String,\ int,\ java.lang.String,\ java.lang.String,\ int,\ java.lang.String)
 comment1.params=
 comment1.target=Hall()
 comment10.params=
@@ -12,13 +12,13 @@ comment12.target=int\ getCapacity()
 comment13.params=capacity
 comment13.target=void\ setCapacity(int)
 comment14.params=
-comment14.target=java.lang.String\ getDescription()
-comment15.params=description
-comment15.target=void\ setDescription(java.lang.String)
+comment14.target=java.lang.String\ getHallOwner()
+comment15.params=hallOwner
+comment15.target=void\ setHallOwner(java.lang.String)
 comment2.params=
-comment2.target=long\ getId()
+comment2.target=java.lang.String\ getId()
 comment3.params=id
-comment3.target=void\ setId(long)
+comment3.target=void\ setId(java.lang.String)
 comment4.params=
 comment4.target=java.lang.String\ getHallName()
 comment5.params=hallName

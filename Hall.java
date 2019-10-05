@@ -2,20 +2,20 @@
 /**
  * Write a description of class Hall here.
  * 
- * @author (your name) 
+ * @Yike Xu
  * @version (a version number or a date)
  */
 public class Hall
 {
-    private long id;
+    private String id;
     private String hallName;
     private int hallPrice;
     private String hallLocation;
     private String eventType;
     private int capacity;
-    private String description;
+    private String hallOwner;
 
-    public Hall(long id, String hallName, int hallPrice, String hallLocation, String eventType, int capacity, String description)
+    public Hall(String id, String hallName, int hallPrice, String hallLocation, String eventType, int capacity, String description)
     {
         this.id = id;
         this.hallName = hallName;
@@ -23,18 +23,18 @@ public class Hall
         this.hallLocation = hallLocation;
         this.eventType = eventType;
         this.capacity = capacity;
-        this.description = description;
+        this.hallOwner = hallOwner;
     }
 
     public Hall()
     {
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -77,12 +77,12 @@ public class Hall
     public void setCapacity(int capacity) {
         this.capacity = capacity;
     }
-
-    public String getDescription() {
-        return description;
+    
+    public String getHallOwner() {
+        return hallOwner;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setHallOwner(String hallOwner) {
+        this.hallOwner = hallOwner;
     }
 }

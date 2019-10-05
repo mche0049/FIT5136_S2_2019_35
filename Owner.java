@@ -2,7 +2,7 @@ import java.util.ArrayList;
 /**
  * Write a description of class Owner here.
  * 
- * @author (your name) 
+ * @Yike Xu
  * @version (a version number or a date)
  */
 public class Owner
@@ -10,14 +10,14 @@ public class Owner
     
     private ArrayList<Hall> halls;
     
-    private long id;
+    private String id;
     private String name;
     private String phoneNo;
     private String email;
     private String userName;
     private String userPwd;
 
-    public Owner(long id, String name, String phoneNo, String email, String userName, String userPwd) 
+    public Owner(String id, String name, String phoneNo, String email, String userName, String userPwd, ArrayList<Hall> halls) 
     {
         this.id = id;
         this.name = name;
@@ -25,16 +25,28 @@ public class Owner
         this.email = email;
         this.userName = userName;
         this.userPwd = userPwd;
+        this.halls = halls;
     }
+    
     public Owner() {
         halls = new ArrayList<Hall>();
+        
+        addHalls("H2019010101", "Caulfield Hall", 1000, "Caulfield", "All", 500, "mhzmhz");
+    }
+    
+    public ArrayList<Hall> getHalls() {
+        return halls;
+    }
+    
+    public void setHalls(ArrayList<Hall> halls){
+        this.halls = halls;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -78,7 +90,7 @@ public class Owner
         this.userPwd = userPwd;
     }
     
-    public void addHalls(long id, String hallName, int hallPrice, String hallLocation, String eventType, int capacity, String description )
+    public void addHalls(String id, String hallName, int hallPrice, String hallLocation, String eventType, int capacity, String hallOwner )
     {
         Hall hall = new Hall();
         hall.setId(id);
@@ -87,6 +99,7 @@ public class Owner
         hall.setHallLocation(hallLocation);
         hall.setEventType(eventType);
         hall.setCapacity(capacity);
-        hall.setDescription(description);
+        hall.setHallOwner(hallOwner);
+        halls.add(hall);
     }
 }

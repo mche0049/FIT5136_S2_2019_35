@@ -1,20 +1,20 @@
-
+import java.util.ArrayList;
 /**
  * Write a description of class Customer here.
  * 
- * @author (your name) 
+ * @Yike Xu 
  * @version (a version number or a date)
  */
 public class Customer
 {
-    private long id;
+    private String id;
     private String name;
     private String phoneNo;
     private String email;
     private String userName;
     private String userPwd;
 
-    public Customer(long id, String name, String phoneNo, String email, String userName, String userPwd) {
+    public Customer(String id, String name, String phoneNo, String email, String userName, String userPwd) {
         this.id = id;
         this.name = name;
         this.phoneNo = phoneNo;
@@ -27,11 +27,11 @@ public class Customer
     {
     }
     
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
