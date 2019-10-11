@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=id\ name\ phoneNo\ email\ userName\ userPwd
-comment0.target=Customer(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment0.params=id\ name\ phoneNo\ email\ userName\ userPwd\ customerType
+comment0.target=Customer(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment1.params=
 comment1.target=Customer()
 comment10.params=
@@ -11,6 +11,10 @@ comment12.params=
 comment12.target=java.lang.String\ getUserPwd()
 comment13.params=userPwd
 comment13.target=void\ setUserPwd(java.lang.String)
+comment14.params=
+comment14.target=java.lang.String\ getCustomerType()
+comment15.params=customerType
+comment15.target=void\ setCustomerType(java.lang.String)
 comment2.params=
 comment2.target=java.lang.String\ getId()
 comment3.params=id
@@ -27,4 +31,4 @@ comment8.params=
 comment8.target=java.lang.String\ getEmail()
 comment9.params=email
 comment9.target=void\ setEmail(java.lang.String)
-numComments=14
+numComments=16

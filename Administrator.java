@@ -7,12 +7,12 @@
  */
 public class Administrator
 {
-    private int id;
+    private String id;
     private String name;
     private String userName;
     private String userPwd;
     
-    public Administrator(int id, String name, String userName, String userPwd) {
+    public Administrator(String id, String name, String userName, String userPwd) {
         this.id = id;
         this.name = name;
         this.userName = userName;
@@ -23,11 +23,11 @@ public class Administrator
     {
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=hallName\ hallRate\ hallReview
+comment0.target=Review(java.lang.String,\ int,\ java.lang.String)
+comment1.params=
+comment1.target=Review()
+comment2.params=
+comment2.target=java.lang.String\ getHallName()
+comment3.params=hallName
+comment3.target=void\ setHallName(java.lang.String)
+comment4.params=
+comment4.target=int\ getHallRate()
+comment5.params=hallRate
+comment5.target=void\ setHallRate(int)
+comment6.params=
+comment6.target=java.lang.String\ getHallReview()
+comment7.params=hallReview
+comment7.target=void\ setHallReview(java.lang.String)
+numComments=8

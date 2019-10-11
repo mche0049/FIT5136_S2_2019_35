@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.params=
-comment0.target=Main()
+comment0.target=UI()
 comment1.params=
 comment1.target=void\ run()
 comment2.params=choice
@@ -13,4 +13,6 @@ comment5.params=choice
 comment5.target=void\ optionCustomer(int)
 comment6.params=choice
 comment6.target=void\ optionOwner(int)
-numComments=7
+comment7.params=choice
+comment7.target=void\ optionAdmin(int)
+numComments=8

@@ -13,14 +13,16 @@ public class Customer
     private String email;
     private String userName;
     private String userPwd;
+    private String customerType;
 
-    public Customer(String id, String name, String phoneNo, String email, String userName, String userPwd) {
+    public Customer(String id, String name, String phoneNo, String email, String userName, String userPwd, String customerType) {
         this.id = id;
         this.name = name;
         this.phoneNo = phoneNo;
         this.email = email;
         this.userName = userName;
         this.userPwd = userPwd;
+        this.customerType = customerType;
     }
 
     public Customer()
@@ -74,4 +76,8 @@ public class Customer
     public void setUserPwd(String userPwd) {
         this.userPwd = userPwd;
     }
+
+    public String getCustomerType() { return customerType; }
+
+    public void setCustomerType(String customerType) {this.customerType = customerType;}
 }

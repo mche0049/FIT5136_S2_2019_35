@@ -28,6 +28,7 @@ public class Hall
 
     public Hall()
     {
+
     }
 
     public String getId() {
@@ -85,4 +86,6 @@ public class Hall
     public void setHallOwner(String hallOwner) {
         this.hallOwner = hallOwner;
     }
+
+
 }

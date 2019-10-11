@@ -30,8 +30,6 @@ public class Owner
     
     public Owner() {
         halls = new ArrayList<Hall>();
-        
-        addHalls("H2019010101", "Caulfield Hall", 1000, "Caulfield", "All", 500, "mhzmhz");
     }
     
     public ArrayList<Hall> getHalls() {
@@ -89,17 +87,5 @@ public class Owner
     public void setUserPwd(String userPwd) {
         this.userPwd = userPwd;
     }
-    
-    public void addHalls(String id, String hallName, int hallPrice, String hallLocation, String eventType, int capacity, String hallOwner )
-    {
-        Hall hall = new Hall();
-        hall.setId(id);
-        hall.setHallName(hallName);
-        hall.setHallPrice(hallPrice);
-        hall.setHallLocation(hallLocation);
-        hall.setEventType(eventType);
-        hall.setCapacity(capacity);
-        hall.setHallOwner(hallOwner);
-        halls.add(hall);
-    }
+
 }

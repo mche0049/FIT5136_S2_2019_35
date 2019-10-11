@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=paymentId\ paymentDate\ totalAmount\ paymentMethod
+comment0.target=Payment(java.lang.String,\ java.lang.String,\ int,\ boolean)
+comment1.params=
+comment1.target=Payment()
+comment2.params=
+comment2.target=java.lang.String\ getPaymentId()
+comment3.params=paymentId
+comment3.target=void\ setPaymentId(java.lang.String)
+comment4.params=
+comment4.target=java.lang.String\ getPaymentDate()
+comment5.params=paymentDate
+comment5.target=void\ setPaymentDate(java.lang.String)
+comment6.params=
+comment6.target=int\ getTotalAmount()
+comment7.params=totalAmount
+comment7.target=void\ setTotalAmount(int)
+comment8.params=
+comment8.target=boolean\ isPaymentMethod()
+comment9.params=paymentMethod
+comment9.target=void\ setPaymentMethod(boolean)
+numComments=10
