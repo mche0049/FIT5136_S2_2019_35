@@ -15,7 +15,7 @@ public class Hall
     private int capacity;
     private String hallOwner;
 
-    public Hall(String id, String hallName, int hallPrice, String hallLocation, String eventType, int capacity, String description)
+    public Hall(String id, String hallName, int hallPrice, String hallLocation, String eventType, int capacity, String hallOwner)
     {
         this.id = id;
         this.hallName = hallName;

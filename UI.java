@@ -54,22 +54,39 @@ public class UI {
         }
     }
 
-    public void login(int choice) {
+    public void login(int choice) throws ParseException {
         System.out.println("----------------------------------------------------");
         System.out.print("UserName:");
         Scanner keyboard = new Scanner(System.in);
         String userName = keyboard.nextLine();
+        int k = 0;
         while (!users.isNameExist(userName, choice)) {
             System.out.println("userName doesn't exist!");
             System.out.print("UserName:");
             userName = keyboard.nextLine();
+            k++;
+            if(k == 3) {
+                System.out.println("Please check the input!");
+                System.out.println("Back to the Main menu!");
+                run();
+            }
         }
+
+        k = 0;
         System.out.print("PassWord:");
         String userPwd = keyboard.nextLine();
         while (!userPwd.equals(users.loginPwd(userName, choice))) {
             System.out.println("Incorrect password!");
             System.out.print("Password:");
             userPwd = keyboard.nextLine();
+
+            k++;
+            if(k == 3) {
+                System.out.println("Please check the input!");
+                System.out.println("Back to the Main menu!");
+                k = 0;
+                run();
+            }
         }
         System.out.println("Login successful!");
         if (choice == 1) {
@@ -128,20 +145,24 @@ public class UI {
                 System.out.print("Email:");
                 email = keyboard.nextLine();
             }
-            System.out.println("The hall can offer concessions for veterans and senior citizens.");
-            System.out.println("1. Veterans");
-            System.out.println("2. Senior Citizens");
-            System.out.println("3. Others");
-            System.out.println("Please ensure the authenticity of the information！");
-            System.out.print("Please enter your choice:");
+
             String discountType = "";
-            int type = users.choiceMenu(1, 3);
-            if (type == 1)
-                discountType = "Veterans";
-            else if (type == 2)
-                discountType = "Senior Citizens";
-            else if (type == 3)
-                discountType = "Others";
+            if (choice == 1) {
+                System.out.println("The hall can offer concessions for veterans and senior citizens.");
+                System.out.println("1. Veterans");
+                System.out.println("2. Senior Citizens");
+                System.out.println("3. Others");
+                System.out.println("Please ensure the authenticity of the information！");
+                System.out.print("Please enter your choice:");
+
+                int type = users.choiceMenu(1, 3);
+                if (type == 1)
+                    discountType = "Veterans";
+                else if (type == 2)
+                    discountType = "Senior Citizens";
+                else if (type == 3)
+                    discountType = "Others";
+            }
             System.out.println("Register Successful!");
             System.out.println("----------------------------------------------------");
             if (choice == 1) //customer
@@ -213,18 +234,18 @@ public class UI {
     public void optionCustomer(int choice) throws ParseException {
         Scanner keyboard = new Scanner(System.in);
         if (choice == 1) {
-            System.out.println("---------------Halls List----------------------------");
-            System.out.println(" Hall Name  | Hall Price | Hall Location | Type    | Capacity");
-            System.out.println("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=");
+            System.out.println("------------------------------Halls List---------------------------------------");
+            System.out.println("     Hall Name      | Hall Price | Hall Location |       Type        | Capacity");
+            System.out.println("-------------------------------------------------------------------------------");
             for (int i = 0; i < users.getHalls().size(); i++) {
-                System.out.print(users.getHalls().get(i).getHallName());
-                System.out.print("| ");
-                System.out.print(users.getHalls().get(i).getHallPrice());
-                System.out.print("| ");
-                System.out.print(users.getHalls().get(i).getHallLocation());
-                System.out.print("| ");
-                System.out.print(users.getHalls().get(i).getEventType());
-                System.out.print("| ");
+                System.out.printf("%-" + 19 + "s", users.getHalls().get(i).getHallName());
+                System.out.print(" | ");
+                System.out.printf("%-" + 10 + "s", users.getHalls().get(i).getHallPrice());
+                System.out.print(" | ");
+                System.out.printf("%-" + 13 + "s", users.getHalls().get(i).getHallLocation());
+                System.out.print(" | ");
+                System.out.printf("%-" + 17 + "s", users.getHalls().get(i).getEventType());
+                System.out.print(" | ");
                 System.out.print(users.getHalls().get(i).getCapacity());
                 System.out.println("");
             }
@@ -232,26 +253,25 @@ public class UI {
             String enter = keyboard.nextLine();
             chooseOption(1);
         } else if (choice == 2) {
-            System.out.println("----------------------------------------------------");
+            System.out.println("---------------------------------------------------------------");
             System.out.print("Please enter the hall's name: ");
             String hallName = keyboard.nextLine();
 
-            System.out.println("----------------------------------------------------");
-            System.out.println(" Hall Name  | Hall Price | Hall Location | Type    | Capacity");
-            System.out.println("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=");
+            System.out.println("-------------------------------------------------------------------------------");
+            System.out.println("     Hall Name      | Hall Price | Hall Location |       Type        | Capacity");
+            System.out.println("-------------------------------------------------------------------------------");
             System.out.println("");
-            System.out.println("-------------Hall Review--------------------------");
             int count = 0;
             for (int i = 0; i < users.getHalls().size(); i++) {
                 if (hallName.equals(users.getHalls().get(i).getHallName())) {
-                    System.out.print(users.getHalls().get(i).getHallName());
-                    System.out.print("     | ");
-                    System.out.print(users.getHalls().get(i).getHallPrice());
-                    System.out.print("     | ");
-                    System.out.print(users.getHalls().get(i).getHallLocation());
-                    System.out.print("     | ");
-                    System.out.print(users.getHalls().get(i).getEventType());
-                    System.out.print("     | ");
+                    System.out.printf("%-" + 19 + "s", users.getHalls().get(i).getHallName());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 10 + "s", users.getHalls().get(i).getHallPrice());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 13 + "s", users.getHalls().get(i).getHallLocation());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 17 + "s", users.getHalls().get(i).getEventType());
+                    System.out.print(" | ");
                     System.out.print(users.getHalls().get(i).getCapacity());
                     System.out.println("");
                     count++;
@@ -261,6 +281,7 @@ public class UI {
                 System.out.println("No matching Hall was found, please check the Hall name.");
                 chooseOption(1);
             } else {
+                System.out.println("---------------------------Hall Review------------------------------------");
                 int rating = 0;
                 double totalRating = 0;
                 int a = 0;
@@ -293,19 +314,19 @@ public class UI {
             String hallName = keyboard.nextLine();
             int count = 0;
             String hallOwner = "";
-            System.out.println("----------------------------------------------------");
-            System.out.println(" Hall Name  | Hall Price | Hall Location | Type    | Capacity");
-            System.out.println("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=");
+            System.out.println("-------------------------------------------------------------------------------");
+            System.out.println("     Hall Name      | Hall Price | Hall Location |       Type        | Capacity");
+            System.out.println("-------------------------------------------------------------------------------");
             for (int i = 0; i < users.getHalls().size(); i++) {
                 if (hallName.equals(users.getHalls().get(i).getHallName())) {
-                    System.out.print(users.getHalls().get(i).getHallName());
-                    System.out.print("     | ");
-                    System.out.print(users.getHalls().get(i).getHallPrice());
-                    System.out.print("     | ");
-                    System.out.print(users.getHalls().get(i).getHallLocation());
-                    System.out.print("     | ");
-                    System.out.print(users.getHalls().get(i).getEventType());
-                    System.out.print("     | ");
+                    System.out.printf("%-" + 19 + "s", users.getHalls().get(i).getHallName());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 10 + "s", users.getHalls().get(i).getHallPrice());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 13 + "s", users.getHalls().get(i).getHallLocation());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 17 + "s", users.getHalls().get(i).getEventType());
+                    System.out.print(" | ");
                     System.out.print(users.getHalls().get(i).getCapacity());
                     System.out.println("");
                     count++;
@@ -370,22 +391,21 @@ public class UI {
             }
         } else if (choice == 4) {
             boolean a = false;
-            System.out.println("------------Booking----------------------------");
-            System.out.println("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+");
-            System.out.println(" Hall Name   | Customer Name  | Start Date | End Date | Quotation ID | Catering");
-            System.out.println("------------------------------------------------------");
+            System.out.println("----------------------------------Booking---------------------------------------------");
+            System.out.println("     Hall Name      | Customer Name | Start Date | End Date   | Quotation ID  | Catering");
+            System.out.println("--------------------------------------------------------------------------------------");
             for (int i = 0; i < users.getQuotations().size(); i++) {
                 if (customerLogin.equals(users.getQuotations().get(i).getCustomer()) && users.getQuotations().get(i).getQuotationStatus() && !users.getQuotations().get(i).getBookStatus()) {
-                    System.out.print(users.getQuotations().get(i).getHallName());
-                    System.out.print("| ");
-                    System.out.print(users.getQuotations().get(i).getCustomer());
-                    System.out.print("| ");
-                    System.out.print(users.getQuotations().get(i).getStartDate());
-                    System.out.print("| ");
-                    System.out.print(users.getQuotations().get(i).getEndDate());
-                    System.out.print("| ");
+                    System.out.printf("%-" + 19 + "s", users.getQuotations().get(i).getHallName());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 13 + "s", users.getQuotations().get(i).getCustomer());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 10 + "s", users.getQuotations().get(i).getStartDate());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 10 + "s", users.getQuotations().get(i).getEndDate());
+                    System.out.print(" | ");
                     System.out.print(users.getQuotations().get(i).getQuotationId());
-                    System.out.print("| ");
+                    System.out.print(" | ");
                     if (users.getQuotations().get(i).getCatering()) {
                         System.out.print("Provide by Owner");
                     } else {
@@ -577,22 +597,22 @@ public class UI {
             }
         } else if (choice == 5) {
             boolean a = true;
-            System.out.println("------------Booking List----------------------------");
-            System.out.println("   Booking ID |Booking Date  | Hall Name | Start Date | End Date  | Total Amount");
+            System.out.println("--------------------------------Booking List-------------------------------------------");
+            System.out.println(" Booking ID   |Booking Date|     Hall Name      | Start Date | End Date  | Total Amount");
+            System.out.println("---------------------------------------------------------------------------------------");
             for (int i = 0; i < users.getBookings().size(); i++) {
                 if (customerLogin.equals(users.getBookings().get(i).getCustomerName())) {
-                    System.out.print(users.getBookings().get(i).getBookingId());
-                    System.out.print("| ");
-                    System.out.print(users.getBookings().get(i).getBookingDate());
-                    System.out.print("| ");
-                    System.out.print(users.getBookings().get(i).getHallName());
-                    System.out.print("| ");
-                    System.out.print(users.getBookings().get(i).getStartDate());
-                    System.out.print("| ");
-                    System.out.print(users.getBookings().get(i).getEndDate());
-                    System.out.print("| ");
+                    System.out.printf("%-" + 13 + "s",users.getBookings().get(i).getBookingId());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 13 + "s", users.getBookings().get(i).getBookingDate());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 18 + "s",users.getBookings().get(i).getHallName());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 10 + "s", users.getBookings().get(i).getStartDate());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 10 + "s", users.getBookings().get(i).getEndDate());
+                    System.out.print(" | ");
                     System.out.print(users.getBookings().get(i).getTotalAmount());
-                    System.out.print("| ");
                     System.out.println("");
                     a = false;
                 }
@@ -634,22 +654,22 @@ public class UI {
             }
         } else if (choice == 6) {
             boolean a = true;
-            System.out.println("--------------Review--------------------------------------");
-            System.out.println("Booking ID   |Booking Date| Hall Name | Start Date | End Date  | Total Amount");
+            System.out.println("--------------------------------Booking List-------------------------------------------");
+            System.out.println(" Booking ID   |Booking Date|     Hall Name      | Start Date | End Date  | Total Amount");
+            System.out.println("---------------------------------------------------------------------------------------");
             for (int i = 0; i < users.getBookings().size(); i++) {
                 if (customerLogin.equals(users.getBookings().get(i).getCustomerName())) {
-                    System.out.print(users.getBookings().get(i).getBookingId());
-                    System.out.print("| ");
-                    System.out.print(users.getBookings().get(i).getBookingDate());
-                    System.out.print("| ");
-                    System.out.print(users.getBookings().get(i).getHallName());
-                    System.out.print("| ");
-                    System.out.print(users.getBookings().get(i).getStartDate());
-                    System.out.print("| ");
-                    System.out.print(users.getBookings().get(i).getEndDate());
-                    System.out.print("| ");
+                    System.out.printf("%-" + 13 + "s",users.getBookings().get(i).getBookingId());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 13 + "s", users.getBookings().get(i).getBookingDate());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 18 + "s",users.getBookings().get(i).getHallName());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 10 + "s", users.getBookings().get(i).getStartDate());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 10 + "s", users.getBookings().get(i).getEndDate());
+                    System.out.print(" | ");
                     System.out.print(users.getBookings().get(i).getTotalAmount());
-                    System.out.print("| ");
                     System.out.println("");
                     a = false;
                 }
@@ -753,27 +773,26 @@ public class UI {
             }
             System.out.print("Please enter the hall capacity:");
             int hallCapacity = users.capacity(1, 9999);
-            for (int i = 0; i < users.getHalls().size(); i++) {
-                if (ownerLogin.equals(users.getHalls().get(i).getHallOwner()))
-                    users.addHalls("H" + id, hallName, hallPrice, hallLocation, eventType, hallCapacity, ownerLogin);
-            }
+            users.addHalls("H" + id, hallName, hallPrice, hallLocation, eventType, hallCapacity, ownerLogin);
             System.out.println("Create Successful!");
             chooseOption(2);
         } else if (choice == 2) {
-            System.out.println("---------------Halls List----------------------------");
-            System.out.println("  Hall No  | Hall Name | Hall Price | Hall Location | Type    | Capacity");
+            System.out.println("-------------------------------------Halls List------------------------------------------------");
+            System.out.println("   Hall ID     |     Hall Name      | Hall Price | Hall Location |       Type        | Capacity");
+            System.out.println("-----------------------------------------------------------------------------------------------");
+
             boolean a = true;
             for (int i = 0; i < users.getHalls().size(); i++) {
                 if (ownerLogin.equals(users.getHalls().get(i).getHallOwner())) {
                     System.out.print(users.getHalls().get(i).getId());
                     System.out.print(" | ");
-                    System.out.print(users.getHalls().get(i).getHallName());
+                    System.out.printf("%-" + 18 + "s", users.getHalls().get(i).getHallName());
                     System.out.print(" | ");
-                    System.out.print(users.getHalls().get(i).getHallPrice());
+                    System.out.printf("%-" + 10 + "s", users.getHalls().get(i).getHallPrice());
                     System.out.print(" | ");
-                    System.out.print(users.getHalls().get(i).getHallLocation());
+                    System.out.printf("%-" + 13 + "s", users.getHalls().get(i).getHallLocation());
                     System.out.print(" | ");
-                    System.out.print(users.getHalls().get(i).getEventType());
+                    System.out.printf("%-" + 17 + "s", users.getHalls().get(i).getEventType());
                     System.out.print(" | ");
                     System.out.print(users.getHalls().get(i).getCapacity());
                     System.out.println("");
@@ -840,21 +859,22 @@ public class UI {
                 }
             }
         } else if (choice == 3) {
-            System.out.println("------------Booking List--------------------------------------");
-            System.out.println("   Booking ID  |     Hall Name      | Start Date | End Date  |");
+            System.out.println("----------------------Booking List--------------------------");
+            System.out.println("   Booking ID  |     Hall Name      | Start Date | End Date");
+            System.out.println("------------------------------------------------------------");
             boolean a = false;
             for (int i = 0; i < users.getBookings().size(); i++) {
-                if (ownerLogin.equals(users.getBookings().get(i).getHallOwner()))
+                if (ownerLogin.equals(users.getBookings().get(i).getHallOwner())) {
                     System.out.print(users.getBookings().get(i).getBookingId());
-                System.out.print(" | ");
-                System.out.printf("%-" + 19 + "s", users.getBookings().get(i).getHallName());
-                System.out.print("| ");
-                System.out.print(users.getBookings().get(i).getStartDate());
-                System.out.print("   | ");
-                System.out.print(users.getBookings().get(i).getEndDate());
-                System.out.print("  |");
-                System.out.println("");
-                a = true;
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 18 + "s", users.getBookings().get(i).getHallName());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 10 + "s", users.getBookings().get(i).getStartDate());
+                    System.out.print(" | ");
+                    System.out.print(users.getBookings().get(i).getEndDate());
+                    System.out.println("");
+                    a = true;
+                }
             }
             if (a) {
                 System.out.println("---------------------------------------------------------------");
@@ -950,20 +970,19 @@ public class UI {
             chooseOption(2);
         } else if (choice == 6) {
             boolean a = false;
-            System.out.println("------------Response Quotation----------------------------");
-            System.out.println("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+");
-            System.out.println(" Hall Name   | Customer Name| Start Date | End Date | Quotation ID");
-            System.out.println("------------------------------------------------------");
+            System.out.println("---------------------------------Response Quotation---------------------------");
+            System.out.println("     Hall Name      |  Customer Name  | Start Date |  End Date  | Quotation ID");
+            System.out.println("------------------------------------------------------------------------------");
             for (int i = 0; i < users.getQuotations().size(); i++) {
                 if (ownerLogin.equals(users.getQuotations().get(i).getHallOwner()) && !users.getQuotations().get(i).getQuotationStatus()) {
-                    System.out.print(users.getQuotations().get(i).getHallName());
-                    System.out.print("| ");
-                    System.out.print(users.getQuotations().get(i).getCustomer());
-                    System.out.print("| ");
-                    System.out.print(users.getQuotations().get(i).getStartDate());
-                    System.out.print("| ");
-                    System.out.print(users.getQuotations().get(i).getEndDate());
-                    System.out.print("| ");
+                    System.out.printf("%-" + 19 + "s", users.getQuotations().get(i).getHallName());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 15 + "s", users.getQuotations().get(i).getCustomer());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 10 + "s", users.getQuotations().get(i).getStartDate());
+                    System.out.print(" | ");
+                    System.out.printf("%-" + 10 + "s", users.getQuotations().get(i).getEndDate());
+                    System.out.print(" | ");
                     System.out.print(users.getQuotations().get(i).getQuotationId());
                     System.out.println("");
                     a = true;
