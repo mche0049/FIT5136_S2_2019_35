@@ -47,7 +47,7 @@ public class PrimeEvents
         addDiscount("Veterans", 0.8);
         addDiscount("Senior Citizens", 0.8);
         addDiscount("Others", 1.0);
-        addAdmin("A1234567890123", "admin", "admin1", "123123");
+        addAdmin("A1234567890123", "admin", "admin1", "123123123");
     }
 
     public ArrayList<Customer> getCustomers() {return customers;}
@@ -134,6 +134,7 @@ public class PrimeEvents
         administrator.setName(name);
         administrator.setUserName(userName);
         administrator.setUserPwd(userPwd);
+        administrators.add(administrator);
     }
 
     public void addDiscount(String customerType, double discountRate) {
@@ -246,6 +247,14 @@ public class PrimeEvents
                 }
             }
         }
+        else if (choice == 3) {
+            for (int i = 0; i < administrators.size(); i++) {
+                if(userName.equals(administrators.get(i).getUserName()))
+                {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -268,6 +277,13 @@ public class PrimeEvents
                 if(userName.equals(owners.get(i).getUserName()))
                 {
                     return owners.get(i).getUserPwd();
+                }
+            }
+        }
+        else if (choice == 3) {
+            for (int i = 0; i < administrators.size(); i++) {
+                if(userName.equals(administrators.get(i).getUserName())) {
+                    return administrators.get(i).getUserPwd();
                 }
             }
         }

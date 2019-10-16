@@ -23,6 +23,11 @@ public class UI {
         ownerLogin = "";
     }
 
+    public static void main(String[] args) throws ParseException {
+        UI p = new UI();
+        p.run();
+    }
+
     public void run() throws ParseException {
         boolean a = true;
         System.out.println("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+");
@@ -65,7 +70,7 @@ public class UI {
             System.out.print("UserName:");
             userName = keyboard.nextLine();
             k++;
-            if(k == 3) {
+            if (k == 3) {
                 System.out.println("Please check the input!");
                 System.out.println("Back to the Main menu!");
                 run();
@@ -81,7 +86,7 @@ public class UI {
             userPwd = keyboard.nextLine();
 
             k++;
-            if(k == 3) {
+            if (k == 3) {
                 System.out.println("Please check the input!");
                 System.out.println("Back to the Main menu!");
                 k = 0;
@@ -602,11 +607,11 @@ public class UI {
             System.out.println("---------------------------------------------------------------------------------------");
             for (int i = 0; i < users.getBookings().size(); i++) {
                 if (customerLogin.equals(users.getBookings().get(i).getCustomerName())) {
-                    System.out.printf("%-" + 13 + "s",users.getBookings().get(i).getBookingId());
+                    System.out.printf("%-" + 13 + "s", users.getBookings().get(i).getBookingId());
                     System.out.print(" | ");
                     System.out.printf("%-" + 13 + "s", users.getBookings().get(i).getBookingDate());
                     System.out.print(" | ");
-                    System.out.printf("%-" + 18 + "s",users.getBookings().get(i).getHallName());
+                    System.out.printf("%-" + 18 + "s", users.getBookings().get(i).getHallName());
                     System.out.print(" | ");
                     System.out.printf("%-" + 10 + "s", users.getBookings().get(i).getStartDate());
                     System.out.print(" | ");
@@ -659,11 +664,11 @@ public class UI {
             System.out.println("---------------------------------------------------------------------------------------");
             for (int i = 0; i < users.getBookings().size(); i++) {
                 if (customerLogin.equals(users.getBookings().get(i).getCustomerName())) {
-                    System.out.printf("%-" + 13 + "s",users.getBookings().get(i).getBookingId());
+                    System.out.printf("%-" + 13 + "s", users.getBookings().get(i).getBookingId());
                     System.out.print(" | ");
                     System.out.printf("%-" + 13 + "s", users.getBookings().get(i).getBookingDate());
                     System.out.print(" | ");
-                    System.out.printf("%-" + 18 + "s",users.getBookings().get(i).getHallName());
+                    System.out.printf("%-" + 18 + "s", users.getBookings().get(i).getHallName());
                     System.out.print(" | ");
                     System.out.printf("%-" + 10 + "s", users.getBookings().get(i).getStartDate());
                     System.out.print(" | ");
@@ -1044,97 +1049,122 @@ public class UI {
             System.out.println("1. View customers' information");
             System.out.println("2. View owners' information");
             System.out.println("3. Delete customer's account");
-            System.out.println("4. Delete owner's information");
+            System.out.println("4. Delete owner's account");
+            System.out.print("Please enter your choice:");
             int manageChoice = users.choiceMenu(1, 4);
             if (manageChoice == 1) {
-                System.out.println(" Customer ID  | Username ");
-                System.out.println("-------------------------");
+                System.out.println("----------------------");
+                System.out.println(" Customer ID | Username ");
+                System.out.println("----------------------");
                 for (int i = 0; i < users.getCustomers().size(); i++) {
                     System.out.print(users.getCustomers().get(i).getId());
                     System.out.print("|");
                     System.out.print(users.getCustomers().get(i).getUserName());
                     System.out.println("");
                 }
-                optionAdmin(1);
+                System.out.println("----------------------");
+                chooseOption(3);
             } else if (manageChoice == 2) {
-                System.out.println(" Owner ID     | Username ");
-                System.out.println("-------------------------");
+                System.out.println("----------------------");
+                System.out.println(" Owner ID | Username ");
+                System.out.println("----------------------");
                 for (int i = 0; i < users.getOwners().size(); i++) {
                     System.out.print(users.getOwners().get(i).getId());
-                    System.out.print("|");
+                    System.out.print(" | ");
                     System.out.print(users.getOwners().get(i).getUserName());
                     System.out.println("");
                 }
+                System.out.println("----------------------");
+                chooseOption(3);
             } else if (manageChoice == 3) {
+                boolean a = true;
                 System.out.println("Please enter the customer ID to delete customer's account");
                 System.out.println("---------------------------------------------------------");
                 String customerId = keyboard.nextLine();
                 for (int i = 0; i < users.getCustomers().size(); i++) {
-                    if(customerId.equals(users.getCustomers().get(i).getId())){
+                    if (customerId.equals(users.getCustomers().get(i).getId())) {
                         users.getCustomers().remove(i);
+                        System.out.println("Delete Successful!");
+                        a = false;
                     }
                 }
-                System.out.println("Delete Successful!");
+                if (a) {
+                    System.out.println("There is no corresponding ID!");
+                    chooseOption(3);
+                }
+                chooseOption(3);
             } else if (manageChoice == 4) {
+                boolean a = true;
                 System.out.println("Please enter the owner ID to delete customer's account");
                 System.out.println("---------------------------------------------------------");
                 String customerId = keyboard.nextLine();
                 for (int i = 0; i < users.getOwners().size(); i++) {
-                    if(customerId.equals(users.getOwners().get(i).getId())){
+                    if (customerId.equals(users.getOwners().get(i).getId())) {
                         users.getOwners().remove(i);
+                        System.out.println("Delete Successful!");
+                        a = false;
                     }
                 }
-                System.out.println("Delete Successful!");
+                if (a) {
+                    System.out.println("There is no corresponding ID!");
+                    chooseOption(3);
+                }
+                chooseOption(3);
+            }
         } else if (choice == 2) {
-                double discountRate1 = 1.0;
-                double discountRate2 = 1.0;
-                double discountRate3 = 1.0;
+            double discountRate1 = 1.0;
+            double discountRate2 = 1.0;
+            double discountRate3 = 1.0;
+            for (int i = 0; i < users.getDiscounts().size(); i++) {
+                if ("Veterans".equals(users.getDiscounts().get(i).getCustomerType())) {
+                    discountRate1 = users.getDiscounts().get(i).getDiscountRate();
+                } else if ("Senior Citizens".equals(users.getDiscounts().get(i).getCustomerType())) {
+                    discountRate2 = users.getDiscounts().get(i).getDiscountRate();
+                } else if ("Others".equals(users.getDiscounts().get(i).getCustomerType())) {
+                    discountRate3 = users.getDiscounts().get(i).getDiscountRate();
+                }
+            }
+            System.out.println("------------Manage Discount----------------------------");
+            System.out.println("The discount rate is as follows");
+            System.out.println("Veterans = " + discountRate1);
+            System.out.println("Senior Citizens = " + discountRate2);
+            System.out.println("Others = " + discountRate3);
+
+            System.out.println("1. Veterans");
+            System.out.println("2. Senior Citizens");
+            System.out.println("3. Others");
+            System.out.print("Please choose the option you want to edit:");
+            int option = users.choiceMenu(1, 3);
+            if (option == 1) {
+                System.out.print("Please enter the new discount rate(10-100): %");
+                int rate = users.discountRate(10, 100);
                 for (int i = 0; i < users.getDiscounts().size(); i++) {
                     if ("Veterans".equals(users.getDiscounts().get(i).getCustomerType())) {
-                        discountRate1 = users.getDiscounts().get(i).getDiscountRate();
-                    } else if ("Senior Citizens".equals(users.getDiscounts().get(i).getCustomerType())) {
-                        discountRate2 = users.getDiscounts().get(i).getDiscountRate();
-                    } else if ("Others".equals(users.getDiscounts().get(i).getCustomerType())) {
-                        discountRate3 = users.getDiscounts().get(i).getDiscountRate();
-                    }
-                }
-                System.out.println("------------Manage Discount----------------------------");
-                System.out.println("The discount rate is as follows");
-                System.out.println("Veterans = " + discountRate1);
-                System.out.println("Senior Citizens = " + discountRate2);
-                System.out.println("Others = " + discountRate3);
-
-                System.out.println("1. Veterans");
-                System.out.println("2. Senior Citizens");
-                System.out.println("3. Others");
-                System.out.print("Please choose the option you want to edit:");
-                int option = users.choiceMenu(1, 3);
-                if (option == 1) {
-                    System.out.print("Please enter the new discount rate(10-100): %");
-                    int rate = users.discountRate(10, 100);
-                    for (int i = 0; i < users.getDiscounts().size(); i++) {
-                        if ("Veterans".equals(users.getDiscounts().get(i).getCustomerType())) {
-                            users.getDiscounts().get(i).setDiscountRate(rate * 0.01);
-                        }
-                    }
-                } else if (option == 2) {
-                    System.out.print("Please enter the new discount rate(10-100): %");
-                    int rate = users.discountRate(10, 100);
-                    for (int i = 0; i < users.getDiscounts().size(); i++) {
-                        if ("Senior Citizens".equals(users.getDiscounts().get(i).getCustomerType())) {
-                            users.getDiscounts().get(i).setDiscountRate(rate * 0.01);
-                        }
-                    }
-                } else if (option == 3) {
-                    System.out.print("Please enter the new discount rate(10-100): %");
-                    int rate = users.discountRate(10, 100);
-                    for (int i = 0; i < users.getDiscounts().size(); i++) {
-                        if ("Others".equals(users.getDiscounts().get(i).getCustomerType())) {
-                            users.getDiscounts().get(i).setDiscountRate(rate * 0.01);
-                        }
+                        users.getDiscounts().get(i).setDiscountRate(rate * 0.01);
                     }
                 }
                 System.out.println("Edit Successful!");
+                chooseOption(3);
+            } else if (option == 2) {
+                System.out.print("Please enter the new discount rate(10-100): %");
+                int rate = users.discountRate(10, 100);
+                for (int i = 0; i < users.getDiscounts().size(); i++) {
+                    if ("Senior Citizens".equals(users.getDiscounts().get(i).getCustomerType())) {
+                        users.getDiscounts().get(i).setDiscountRate(rate * 0.01);
+                    }
+                }
+                System.out.println("Edit Successful!");
+                chooseOption(3);
+            } else if (option == 3) {
+                System.out.print("Please enter the new discount rate(10-100): %");
+                int rate = users.discountRate(10, 100);
+                for (int i = 0; i < users.getDiscounts().size(); i++) {
+                    if ("Others".equals(users.getDiscounts().get(i).getCustomerType())) {
+                        users.getDiscounts().get(i).setDiscountRate(rate * 0.01);
+                    }
+                }
+                System.out.println("Edit Successful!");
+                chooseOption(3);
             }
         } else if (choice == 3) {
             System.out.println("Logout Successful!");
