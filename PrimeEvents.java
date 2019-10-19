@@ -8,8 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 /**
  * Write a description of class Users here.
- * 
- * @Yike Xu
+ * Detailed description of controller class
+ *
  * @version (a version number or a date)
  */
 public class PrimeEvents
@@ -75,7 +75,7 @@ public class PrimeEvents
 
     public ArrayList<Review> getReviews() { return reviews;}
 
-    public Hall getHallByName(String name)
+    public Hall getHallByName(String name)          //to get the hall name
     {
         for(int i = 0; i < halls.size(); i++)
         {
@@ -87,7 +87,7 @@ public class PrimeEvents
         return null;
     }
 
-    public Customer getCustomerByName(String name) {
+    public Customer getCustomerByName(String name) {            // to get the customer by name
         for(int i = 0; i < customers.size(); i++)
         {
             if (name.equals(customers.get(i).getUserName()))
@@ -205,7 +205,7 @@ public class PrimeEvents
         reviews.add(review);
     }
     
-    public boolean isExist(String userName)
+    public boolean isExist(String userName)             // to check whether the username exist
     {
         for (int i = 0; i < owners.size(); i++)
         {
@@ -215,7 +215,7 @@ public class PrimeEvents
             }
         }
 
-        for (int i = 0; i < customers.size(); i++)
+        for (int i = 0; i < customers.size(); i++)    //validation of username      
         {
             if(userName.equals(customers.get(i).getUserName()))
             {
@@ -225,7 +225,7 @@ public class PrimeEvents
         return false;
     }
 
-    public boolean isNameExist(String userName, int choice)
+    public boolean isNameExist(String userName, int choice)             ///validation of owner details
     {
         if(choice == 2)
         {
@@ -237,7 +237,7 @@ public class PrimeEvents
                 }
             }
         }
-        else if (choice == 1) {
+        else if (choice == 1) {                 //validation for name of customer
 
             for (int i = 0; i < customers.size(); i++)
             {
@@ -247,7 +247,7 @@ public class PrimeEvents
                 }
             }
         }
-        else if (choice == 3) {
+        else if (choice == 3) {         // validation for name of admin
             for (int i = 0; i < administrators.size(); i++) {
                 if(userName.equals(administrators.get(i).getUserName()))
                 {
@@ -258,9 +258,9 @@ public class PrimeEvents
         return false;
     }
 
-    public String loginPwd(String userName, int choice)
+    public String loginPwd(String userName, int choice)         // method of login password
     {   
-        if(choice == 1)
+        if(choice == 1)                 // for customer
         {
             for (int i = 0; i < customers.size(); i++)
             {
@@ -270,7 +270,7 @@ public class PrimeEvents
                 }
             }
         }
-        else if(choice == 2)
+        else if(choice == 2)        // for owner
         {
             for (int i = 0; i < owners.size(); i++)
             {
@@ -280,7 +280,7 @@ public class PrimeEvents
                 }
             }
         }
-        else if (choice == 3) {
+        else if (choice == 3) {     // for administartor
             for (int i = 0; i < administrators.size(); i++) {
                 if(userName.equals(administrators.get(i).getUserName())) {
                     return administrators.get(i).getUserPwd();
@@ -290,7 +290,7 @@ public class PrimeEvents
         return "";
     }
 
-    public boolean lengthVal(String userName, int length)
+    public boolean lengthVal(String userName, int length)       // username length check
     {
         if(userName.length() < length)
         {
@@ -299,7 +299,7 @@ public class PrimeEvents
         return false;
     }
 
-    public boolean idLengthVal(String str, int number)
+    public boolean idLengthVal(String str, int number)          // password length check
     {
         if(str.length() == number)
         {
@@ -308,12 +308,12 @@ public class PrimeEvents
         return false;
     }
 
-    public boolean isPhoneNo(String phoneNo)
+    public boolean isPhoneNo(String phoneNo)            //length of phone number check
     {
         return phoneNo.charAt(0) == '0' && phoneNo.length() == 10 && phoneNo.matches("[0-9]+");
     }
 
-    public boolean isEmpty(String str)
+    public boolean isEmpty(String str)          //booleean check
     {
         if(str.length() > 0)
         {
@@ -353,7 +353,7 @@ public class PrimeEvents
         return choice;
     }
 
-    public int numberRange(int number1, int number2 )
+    public int numberRange(int number1, int number2 )    ///number check
     {
         Scanner keyboard = new Scanner(System.in);
         String choice1 = keyboard.nextLine();
@@ -374,7 +374,7 @@ public class PrimeEvents
                     choice1 = keyboard.nextLine();
                 }
             }
-            catch (NumberFormatException e)
+            catch (NumberFormatException e)                 // format exception
             {
                 System.out.println("Invalid Input!");
                 System.out.print("Hall Price:");
@@ -384,7 +384,7 @@ public class PrimeEvents
         return choice;
     }
 
-    public int discountRate(int number1, int number2 )
+    public int discountRate(int number1, int number2 )          //to manage discounts
     {
         Scanner keyboard = new Scanner(System.in);
         String choice1 = keyboard.nextLine();
@@ -417,7 +417,7 @@ public class PrimeEvents
 
 
 
-    public int capacity(int number1, int number2 )
+    public int capacity(int number1, int number2 )      // to enter the hall capacity
     {
         Scanner keyboard = new Scanner(System.in);
         String choice1 = keyboard.nextLine();
@@ -448,7 +448,7 @@ public class PrimeEvents
         return choice;
     }
 
-    public boolean isEmail(String string) {
+    public boolean isEmail(String string) {             //for entering the email
         if (string == null)
             return false;
         String regEx1 = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
@@ -462,7 +462,7 @@ public class PrimeEvents
             return false;
     }
 
-    public boolean isValidStartDate(String str){
+    public boolean isValidStartDate(String str){        // for validating the start date format
         boolean result = true;
         int a = 0;
         try {
@@ -471,7 +471,7 @@ public class PrimeEvents
             //e.printStackTrace();
         }
 
-        if(str.length() == 8) {
+        if(str.length() == 8) {                 // checking the length of date 
             SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
             Date date = new Date(System.currentTimeMillis());
             int b = Integer.parseInt(format.format(date));
@@ -494,7 +494,7 @@ public class PrimeEvents
         return result;
     }
 
-    public boolean isValidEndDate(String str, String str1){
+    public boolean isValidEndDate(String str, String str1){         // checking the format of enddate 
         boolean result = true;
         int a = 0;
         try {
@@ -523,7 +523,7 @@ public class PrimeEvents
         return result;
     }
 
-    public int calculateTotalDays(String startDate,String endDate) throws ParseException{
+    public int calculateTotalDays(String startDate,String endDate) throws ParseException{           // calculating the total dates from start to end
         SimpleDateFormat formatter =   new SimpleDateFormat( "yyyyMMdd" );
         Date date1=null;
         Date date = formatter.parse(startDate);
@@ -537,7 +537,7 @@ public class PrimeEvents
     }
 
 
-    public boolean isName(String str) {
+    public boolean isName(String str) {             // check for the name 
         String txt = str + "";
         Pattern p = Pattern.compile("[0-9]*");
         Matcher m = p.matcher(txt);
@@ -549,7 +549,7 @@ public class PrimeEvents
         return false;
     }
 
-    public boolean isDateRepeat(String startDate, String endDate, String hallName) {
+    public boolean isDateRepeat(String startDate, String endDate, String hallName) {                // checking whether the date is repeated
         boolean a = false;
         System.out.println(startDate);
         for(int i = 0; i < bookings.size();i++) {
